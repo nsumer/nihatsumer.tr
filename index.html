@@ -126,17 +126,60 @@
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased selection:bg-indigo-100 selection:text-indigo-900">
 
+	<header>
+    <div class="header-inner">
+        <!-- Add the "brand-container" class here -->
+        <div class="brand-container">
+            <img alt="Logo" height="50" src="/logo50.png" class="logo">
+            <h2 class="slogan">Bilirkişi Yardımcı Yazılımları</h2>
+        </div>
+        
+        <nav>
+            <a href="#projects">Projelerim</a>
+            <a href="#about">Hakkımda</a>
+            <a href="#contact">İletişim</a>
+        </nav>
+    </div>
+</header>
+<style>
+
+/* --- Default (Desktop) Layout --- */
+.brand-container {
+    display: flex;
+    align-items: center; /* Aligns logo and text vertically in the center */
+    gap: 15px; /* Adds space between the logo and the slogan */
+    flex-direction: row; /* Keeps them side-by-side */
+}
+
+.slogan {
+    margin: 0;
+    font-size: 1.5rem; /* Adjust based on your preference */
+}
+
+/* --- Mobile Layout (Screens smaller than 768px) --- */
+@media (max-width: 768px) {
+    .brand-container {
+        flex-direction: column; /* This is the magic line that stacks them! */
+        text-align: center; /* Centers the text under the logo */
+        gap: 8px; /* Slightly less space between them on mobile */
+    }
+
+    /* Optional: Shrink the slogan text a bit on mobile so it fits better */
+    .slogan {
+        font-size: 1.2rem; 
+    }
+}
+	
+</style>
+	
     <!-- Navigation -->
     <header class="fixed top-0 w-full z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0 flex items-center">
                    <img  alt="Logo"  src="/logo50.png" height="50"/>
-					
-					<a href="#" class="text-xl font-bold tracking-tight text-indigo-600"></a> <h2 class="text-3xl font-bold text-slate-900">Bilirkişi Yardımcı Yazılımları</h2>
-					
-					
-                </div>
+        			<a href="#" class="text-xl font-bold tracking-tight text-indigo-600"></a> <h2 class="text-3xl font-bold text-slate-900">Bilirkişi Yardımcı Yazılımları</h2>
+		        </div>
                 <nav class="hidden md:flex space-x-8">
                     <a href="#projects" class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Projelerim</a>
                     <a href="#about" class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Hakkımda</a>
