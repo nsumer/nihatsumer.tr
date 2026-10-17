@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>&lt;byy/&gt; | Bilirkişi Yardımcı Yazılımları</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -13,23 +14,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
-<script>
-  const menuToggle = document.getElementById('menuToggle');
-  const menuList = document.getElementById('menuList');
-
-  menuToggle.addEventListener('click', () => {
-    menuList.classList.toggle('active');
-    
-    // İsteğe bağlı: Menü açıldığında ☰ ikonunu ✕ (Kapat) işaretine dönüştürür
-    if (menuList.classList.contains('active')) {
-      menuToggle.textContent = '✕';
-    } else {
-      menuToggle.textContent = '☰';
-    }
-  });
-</script>
-	
-	
     <script>
         tailwind.config = {
             theme: {
@@ -107,159 +91,160 @@
             box-shadow: 0 16px 40px -10px rgba(220, 38, 38, 0.2);
         }
 
-.centered-heading {
-   
-  /* Dikey ve yatay ortalama kodları */
-  display: flex;
-  align-items: center;     /* Dikeyde ortalar */
-  justify-content: center; /* Yatayda ortalar */
-}
+        .centered-heading {
+            /* Dikey ve yatay ortalama kodları */
+            display: flex;
+            align-items: center;      /* Dikeyde ortalar */
+            justify-content: center; /* Yatayda ortalar */
+        }
 
-.container-grid {
-  display: grid;
-  grid-template-columns: 20fr 60fr 30fr; /* Matches your 20:60:40 ratio */
-  width: 100%;
-}
+        .container-grid {
+            display: grid;
+            grid-template-columns: 20fr 60fr 30fr; /* Matches your 20:60:40 ratio */
+            width: 100%;
+        }
 
-.left {
-  text-align: left;
-}
+        .left { text-align: left; }
+        .center { text-align: center; } /* Tam orta eksene hizalar */
+        .right { text-align: right; }
 
-.center {
-  text-align: center; /* Tam orta eksene hizalar */
-}
-
-.right {
-  text-align: right;
-}
-
-
-/* --- GENEL VE BÜYÜK EKRAN TASARIMI --- */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background-color: #f8f9fa;
-  position: relative;
-}
-
-.brand-group {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.logo { font-weight: bold; font-size: 24px; }
-.slogan { font-size: 14px; color: #666; }
-
-.menu-bar {
-  display: flex;
-  gap: 20px;
-}
-.menu-bar a {
-  text-decoration: none;
-  color: #333;
-}
-
-/* Masaüstünde Hamburger Butonunu Gizle */
-.hamburger-btn {
-  display: none;
-  font-size: 28px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-/* --- MOBİL VE KÜÇÜK EKRAN TASARIMI (768px ve altı) --- */
-@media (max-width: 768px) {
-  .hamburger-btn {
-    display: block; /* Butonu mobilde görünür yap */
-  }
-
-  .brand-group {
-    flex-direction: column; /* Sloganı logonun altına indir */
-    align-items: flex-start;
-    gap: 5px;
-  }
-
-  .menu-bar {
-    display: none; /* Menüyü varsayılan olarak mobilde gizle */
-    flex-direction: column;
-    position: absolute;
-    top: 100%; /* Navbar'ın hemen altından başlaması için */
-    left: 0;
-    width: 100%;
-    background-color: #f8f9fa;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    gap: 15px;
-    z-index: 100;
-  }
-
-  /* JavaScript ile bu sınıf tetiklendiğinde menü açılacak */
-  .menu-bar.active {
+        /* --- GENEL VE BÜYÜK EKRAN TASARIMI --- */
+   .navbar {
     display: flex;
-  }
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
 }
 
-		
-		
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo { font-weight: bold; font-size: 24px; }
+        .slogan { font-size: 14px; color: #666; }
+
+        .menu-bar {
+            display: flex;
+            gap: 20px;
+        }
+        .menu-bar a {
+            text-decoration: none;
+            
+        }
+
+       /* Masaüstünde Hamburger Butonunu Gizle */
+.hamburger-btn {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ffffff; /* Butonu beyaz yapar */
+    transition: color 0.3s ease;
+}
+
+.hamburger-btn:hover,
+.hamburger-btn[aria-expanded="true"] {
+    color: #dc2626; /* Üzerine gelince veya menü açıkken kırmızı (brand-red) olur */
+}
+
+       
+        /* --- MOBİL VE KÜÇÜK EKRAN TASARIMI (768px ve altı) --- */
+  @media (max-width: 768px) {
+      .hamburger-btn {
+          display: block; /* Butonu mobilde görünür yap */
+      }
+
+      .brand-group {
+          flex-direction: column; /* Sloganı logonun altına indir */
+          align-items: center; /* Merkeze hizalar */
+          text-align: center; /* Slogan metnini ortalar */
+          gap: 5px;
+      }
+	  
+.menu-bar {
+          display: flex; /* Changed from none */
+          flex-direction: column;
+          position: absolute;
+          top: 100%; 
+          left: 0;
+          width: 100%;
+          background-color: rgba(0, 0, 0, 0.95);
+          backdrop-filter: blur(10px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 20px;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+          gap: 15px;
+          z-index: 100;
+          
+          /* Animation Properties */
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-15px);
+          pointer-events: none; /* Prevents clicking while hidden */
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* JavaScript ile bu sınıf tetiklendiğinde menü açılacak */
+      .menu-bar.active {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+          pointer-events: auto;
+      }	  
+       
+            /* JavaScript ile bu sınıf tetiklendiğinde menü açılacak */
+            .menu-bar.active {
+                display: flex;
+            }
+        }
     </style>
-
-
-
-	
 </head>
 <body class="antialiased bg-grid min-h-screen flex flex-col justify-between selection:bg-brand-red selection:text-white">
 
     <!-- Sticky Navigation Header -->
-    
-<header class="navbar fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4 centered-heading ">
-
-<nav class="max-w-6xl mx-auto bg-black/70 backdrop-blur-xl border border-white/10 rounded-2xl px-5 py-3 flex items-center justify-between shadow-2xl">
-	
-  <!-- Sol Blok: Logo ve Slogan -->
-  <div class="brand-group">
-    <span class="logo">
-	  <!-- Logo with Space Grotesk Font -->
-      <a href="#" onclick="navigateTo('home'); return false;" class="font-logo text-2xl font-bold tracking-tight flex items-center group">
-      <span class="text-brand-red group-hover:text-red-400 transition-colors">&lt;</span>byy<span class="text-brand-red group-hover:text-red-400 transition-colors">/&gt;</span>
-      </a>
-
-	</span>
-    <span class="slogan">
-		<h3 class="text-4xl md:text-4xl font-black tracking-tight mb-4 centered-heading"  font-family: Space Grotesk, sans-serif; >
-    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-800">B</span>
-    ilirkişi&nbsp; 
-    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-800">Y</span>
-    ardımcı&nbsp;<span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-800">Y</span>
-	azılımları
-</h3>
+    <header class="navbar fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4 centered-heading">
+       
+	   
+	   <nav class="w-full mx-auto bg-black/70 backdrop-blur-xl border border-white/10 rounded-2xl px-5 py-3 flex items-center justify-between gap-8 md:gap-12 shadow-2xl">
+	   
+            
+            <!-- Sol Blok: Logo ve Slogan -->
+            <div class="brand-group">
+                <span class="logo">
+                    <!-- Logo with Space Grotesk Font -->
+                    <a href="#" onclick="navigateTo('home'); return false;" class="font-logo text-2xl font-bold tracking-tight flex items-center group">
+                        <span class="text-brand-red group-hover:text-red-400 transition-colors">&lt;</span>byy<span class="text-brand-red group-hover:text-red-400 transition-colors">/&gt;</span>
+                    </a>
+                </span>
                 
-
-	</span>
-  </div>
-	
-
-  <!-- Hamburger Butonu (Mobilde görünecek) -->
-  <button class="hamburger-btn" id="menuToggle">☰</button>
-
-  <!-- Sağ Blok: Menü Listesi -->
-  <nav class="menu-bar" id="menuList">
-	              <!-- Navigation Links -->
-            <div class="flex items-center space-x-6 text-sm font-medium">
-                <a href="#" onclick="navigateTo('home'); return false;" class="text-gray-300 hover:text-brand-red transition-colors">Projeler</a>
-                <a href="#" onclick="navigateTo('about'); return false;" class="text-gray-300 hover:text-brand-red transition-colors">Hakkımda / İletişim</a>
+<span class="slogan text-xl md:text-2xl font-black tracking-tight" style="font-family: Space Grotesk, sans-serif;">
+    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-800">B</span>ilirkişi
+    &nbsp;
+    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-800">Y</span>ardımcı
+    &nbsp;
+    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-800">Y</span>azılımları
+</span>
+			
+			
             </div>
 
-  </nav>
-	</div>
-</header>
+            <!-- Hamburger Butonu (Mobilde görünecek) -->
+            <button class="hamburger-btn" id="menuToggle">☰</button>
 
+            <!-- Sağ Blok: Menü Listesi -->
+            <nav class="menu-bar" id="menuList">
+                <!-- Navigation Links -->
+                <div class="flex items-center space-x-6 text-sm font-medium">
+                    <a href="#" onclick="navigateTo('home'); return false;" class="text-gray-300 hover:text-brand-red transition-colors">Projeler</a>
+                    <a href="#" onclick="navigateTo('about'); return false;" class="text-gray-300 hover:text-brand-red transition-colors">Hakkımda / İletişim</a>
+                </div>
+            </nav>
+        </nav>
+    </header>
 
-
-	
     <!-- MAIN CONTENT CONTAINER (SPA Views) -->
     <main class="pt-28 pb-12 px-4 md:px-8 flex-grow max-w-6xl mx-auto w-full" id="app-container">
 
@@ -270,11 +255,8 @@
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-brand-red/10 blur-[100px] rounded-full pointer-events-none"></div>
                 
                 <span class="text-brand-red font-semibold tracking-widest text-xs uppercase bg-brand-red/10 px-3.5 py-1.5 rounded-full border border-brand-red/20 inline-block mb-4">
-                    
                     Bilirkişiler, Avukatlar ve Adli Bilişim Profesyonelleri İçin Çözümler
-                    
                 </span>
-                
                 
                 <p class="text-gray-400 text-base md:text-lg leading-relaxed font-light">
                     Bilirkişilerin iş süreçlerini otomatize eden ve UDF formatındaki belgeleri işlemeyi hızlandıran araçlar.
@@ -327,7 +309,7 @@
                     <div onclick="navigateTo('project-3')" class="bento-card group cursor-pointer bg-brand-card border border-white/10 rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between">
                         <div class="aspect-video overflow-hidden bg-black/60 relative">
                             <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent z-10"></div>
-                            <img src="/i.jpg" alt="Bilirkişi İş Takip" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <img src="https://nihatsumer.tr/i.jpg" alt="Bilirkişi İş Takip" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                             <div class="hidden absolute inset-0 items-center justify-center bg-zinc-900 text-brand-red/40 text-3xl font-bold">İŞ TAKİP</div>
                         </div>
                         <div class="p-6 relative z-20 -mt-6">
@@ -346,7 +328,7 @@
                     <div onclick="navigateTo('project-4')" class="bento-card group cursor-pointer bg-brand-card border border-white/10 rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between">
                         <div class="aspect-video overflow-hidden bg-black/60 relative">
                             <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent z-10"></div>
-                            <img src="/h.jpg" alt="HTS Analitika" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <img src="https://nihatsumer.tr/h.jpg" alt="HTS Analitika" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                             <div class="hidden absolute inset-0 items-center justify-center bg-zinc-900 text-brand-red/40 text-3xl font-bold">HTS ANALİTİKA</div>
                         </div>
                         <div class="p-6 relative z-20 -mt-6">
@@ -375,7 +357,9 @@
                 <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
                     <div class="w-32 h-32 rounded-2xl bg-gradient-to-tr from-brand-red to-zinc-800 p-1 flex-shrink-0 shadow-xl">
                         <div class="w-full h-full bg-black rounded-[14px] flex items-center justify-center text-3xl font-bold text-brand-red font-logo">
-                            &lt;byy/&gt;
+                            <a href="#" onclick="navigateTo('home'); return false;" class="font-logo text-2xl font-bold tracking-tight flex items-center group">
+                        <span class="text-brand-red group-hover:text-red-400 transition-colors">&lt;</span>byy<span class="text-brand-red group-hover:text-red-400 transition-colors">/&gt;</span>
+                    </a>
                         </div>
                     </div>
                     <div>
@@ -386,10 +370,13 @@
 
                 <div class="space-y-4 text-gray-300 leading-relaxed border-t border-white/10 pt-6 font-light">
                     <p>
-                        Merhaba, ben <strong class="text-white font-logo">&lt;byy/&gt;</strong> projelerinin geliştiricisiyim. Adli bilirkişilik süreçlerinde yaşanan zaman kaybını azaltmak ve raporlama standartlarını yükseltmek amacıyla özel yazılım çözümleri üretiyorum.
+                        Merhaba, ben Nihat Sümer,
+                        <span class="text-brand-red group-hover:text-red-400 transition-colors">&lt;</span>byy<span class="text-brand-red group-hover:text-red-400 transition-colors">/&gt;</span> projelerinin geliştiricisiyim. Elektronik Y. Mühendisi'yim, uzun yıllardır telekom ve bilişim alanlarında çalıştım ve çalışmaktayım.Adli bilirkişilik süreçlerinde yaşanan zaman kaybını azaltmak ve raporlama standartlarını yükseltmek amacıyla özel yazılım çözümleri üretiyorum.
                     </p>
                     <p>
-                        Geliştirdiğim uygulamalar; masaüstü entegrasyonu, yüksek performans, veri güvenliği ve kullanıcı dostu arayüz ilkeleri benimsenerek hazırlanmıştır.
+                        
+						Yazılımlarım ücretsizdir, yazılımlarımla ilgili görüş ve önerilerinizi, olursa karşılaşılan hataları bildirmenizi rica ederim. 
+												
                     </p>
                 </div>
 
@@ -398,7 +385,7 @@
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         LinkedIn Profil
                     </a>
-                    <a href="mailto:destek@byy.com.tr" class="flex items-center gap-2 px-5 py-3 bg-white/5 hover:bg-brand-red text-white font-medium rounded-xl transition-all border border-white/10">
+                    <a href="mailto:nihat@nihatsumer" class="flex items-center gap-2 px-5 py-3 bg-white/5 hover:bg-brand-red text-white font-medium rounded-xl transition-all border border-white/10">
                         <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         E-posta Gönder
                     </a>
@@ -416,7 +403,7 @@
                 <p class="text-gray-400 mt-2 font-light">Microsoft Word belgelerinizi UDF formatına dönüştürmenin en hızlı yolu.</p>
                 
                 <div class="my-8 rounded-2xl bg-zinc-900 overflow-hidden border border-white/10 h-64 md:h-[450px]">
-                    <img src="/wu.jpg" alt="WORDUDF Kaydedici" class="w-full h-full object-cover">
+                    <img src="https://nihatsumer.tr/wu.jpg" alt="WORDUDF Kaydedici" class="w-full h-full object-cover">
                 </div>
 
                 <div class="text-gray-300 space-y-4 leading-relaxed font-light">
@@ -430,15 +417,12 @@
                     <p>
                         Yapmanız gereken tek şey Windows Word içinde iken UDF Kaydet butonuna tıklamaktır. UDF formatı Word programının birleştirilmiş tablolar gibi bazı özelliklerini desteklemediğinden tabloları resim olarak kaydetmeyi seçebilir, resim kalitesini seçebilirsiniz.
                         Menüde yer alan UDF kısmına geçtiğinizde çevrim ayarlarını yapabilirsiniz
-                        
-                        
                     </p>
-                    
                 </div>
 
                 <div class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <span class="text-xs text-gray-500 font-mono">Sürüm: v4.0.0.0 | Windows 10/11</span>
-                    <a href="#" class="w-full sm:w-auto px-8 py-4 bg-brand-red hover:bg-brand-redHover text-white font-bold rounded-2xl transition-all shadow-lg shadow-brand-red/30 text-center">
+                    <a href="https://drive.google.com/file/d/1QWlPt7Pt66CXW7j3z7rLV9hR9wYqZWWp/view?usp=drive_link" class="w-full sm:w-auto px-8 py-4 bg-brand-red hover:bg-brand-redHover text-white font-bold rounded-2xl transition-all shadow-lg shadow-brand-red/30 text-center">
                         Yazılımı İndir (.exe)
                     </a>
                 </div>
@@ -455,7 +439,7 @@
                 <p class="text-gray-400 mt-2 font-light">UYAP ve UDF dosyalarını anında görüntüleyin.</p>
                 
                 <div class="my-8 rounded-2xl bg-zinc-900 overflow-hidden border border-white/10 h-64 md:h-[450px]">
-                    <img src="/u.jpg" alt="UDF Ön İzleme" class="w-full h-full object-cover">
+                    <img src="https://nihatsumer.tr/u.jpg" alt="UDF Ön İzleme" class="w-full h-full object-cover">
                 </div>
 
                 <div class="text-gray-300 space-y-4 leading-relaxed font-light">
@@ -468,26 +452,18 @@
                         Özellikle çok sayıda UDF belgesinin içeriklerine hızlıca göz atmanız gerektiğinde büyük zaman tasarrufu sağlar.
                     </p>
                     
-                    <p>
-                    <img src="/dikkat.png" width="50" align="center"> 
-                        
-                        
+                    <p class="text-center">
+                        <img src="https://nihatsumer.tr/dikkat.png" width="50" class="mx-auto block" alt="Dikkat"> 
                     </p>
-
-      
+       
                     <p>
-                    Ön izleme yapabilmek için öncelikle Windows Dosya Gezgini'nde ön izleme paneli açık olmalıdır. Ön izleme panelini Windows Gezgini'nde iken ALP+P tuşlarına basarak açıp kapatabilirsiniz.
-                        
-                        
+                        Ön izleme yapabilmek için öncelikle Windows Dosya Gezgini'nde ön izleme paneli açık olmalıdır. Ön izleme panelini Windows Gezgini'nde iken Alt + P tuşlarına basarak açıp kapatabilirsiniz.
                     </p>
-
-                    
-                    
                 </div>
 
                 <div class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <span class="text-xs text-gray-500 font-mono">Sürüm: v2.1 | Windows 10/11</span>
-                    <a href="#" class="w-full sm:w-auto px-8 py-4 bg-brand-red hover:bg-brand-redHover text-white font-bold rounded-2xl transition-all shadow-lg shadow-brand-red/30 text-center">
+                    <a href="https://drive.google.com/file/d/1Jre45lSjM5ErEMUv1ik2gY0q8rCSZaOP/view?usp=drive_link" class="w-full sm:w-auto px-8 py-4 bg-brand-red hover:bg-brand-redHover text-white font-bold rounded-2xl transition-all shadow-lg shadow-brand-red/30 text-center">
                         Yazılımı İndir (.exe)
                     </a>
                 </div>
@@ -504,31 +480,25 @@
                 <p class="text-gray-400 mt-2 font-light">Dosya takibi ve UYAP toplu indirme otomasyonu.</p>
                 
                 <div class="my-8 rounded-2xl bg-zinc-900 overflow-hidden border border-white/10 h-64 md:h-[450px]">
-                    <img src="/i.jpg" alt="Bilirkişi İş Takip" class="w-full h-full object-cover">
+                    <img src="https://nihatsumer.tr/i.jpg" alt="Bilirkişi İş Takip" class="w-full h-full object-cover">
                 </div>
 
                 <div class="text-gray-300 space-y-4 leading-relaxed font-light">
                     <h3 class="text-xl font-bold text-white">Yazılım Hakkında</h3>
-<p> Tarafınıza atanan bilirkişilik dosyalarını düzenli bir panel üzerinden takip etmenize ve dosya eklerini tek tıkla toplu olarak bilgisayarınıza indirmenize olanak tanır.</p>
-
-<p>Rutin indirme süreçlerini otomatikleştirerek iş yükünü hafifletir.</p>
-
-<p> Tüm verileri Uyap Bilirkişi Portal hesabınızdan çeker, otomatik güncelleme yapar.</p>
-
-<p> Yaklaşan, tamamlanan, gecikmeli vs. dosyalarınızı takip edebilir, notlar alabilirsiniz.</p>
-
-<p> Raporlarınızla ilgili tüm bilgileri görebilir,yaklaşan, tamamlanan, gecikmeli vs. dosyalarınızı takip edebilir, notlar alabilirsiniz.</p>
-
-<p> Filtreleme ve arama yapabilir, excel formatında dışa aktarabilirsiniz.</p>
-
-<p>İsterseniz toplu indirme modülü ile seçtiğiniz dosyanın altındaki tüm evrakları ekleri ile birlikte indirebilir, istemediğiniz evrakları, evrak türlerini indirme dışında tutabilirsiniz. İndirdiğiniz dosyalar bilgisayarınıza evrak_**** şeklinde değil Tarih_dosya_adı şeklinde kaydedilir. </p>
-                    
+                    <p>Tarafınıza atanan bilirkişilik dosyalarını düzenli bir panel üzerinden takip etmenize ve dosya eklerini tek tıkla toplu olarak bilgisayarınıza indirmenize olanak tanır.</p>
+                    <p>Rutin indirme süreçlerini otomatikleştirerek iş yükünü hafifletir.</p>
+                    <p>Tüm verileri Uyap Bilirkişi Portal hesabınızdan çeker, otomatik güncelleme yapar.</p>
+                    <p>Yaklaşan, tamamlanan, gecikmeli vs. dosyalarınızı takip edebilir, notlar alabilirsiniz.</p>
+                    <p>Raporlarınızla ilgili tüm bilgileri görebilir,yaklaşan, tamamlanan, gecikmeli vs. dosyalarınızı takip edebilir, notlar alabilirsiniz.</p>
+                    <p>Filtreleme ve arama yapabilir, excel formatında dışa aktarabilirsiniz.</p>
+                    <p>İsterseniz toplu indirme modülü ile seçtiğiniz dosyanın altındaki tüm evrakları ekleri ile birlikte indirebilir, istemediğiniz evrakları, evrak türlerini indirme dışında tutabilirsiniz. İndirdiğiniz dosyalar bilgisayarınıza evrak_**** şeklinde değil Tarih_dosya_adı şeklinde kaydedilir.</p>
                 </div>
 
                 <div class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <span class="text-xs text-gray-500 font-mono">Sürüm: v1.58 | Windows 10/11</span>
-                    <a href="#" class="w-full sm:w-auto px-8 py-4 bg-brand-red hover:bg-brand-redHover text-white font-bold rounded-2xl transition-all shadow-lg shadow-brand-red/30 text-center">
-                        Yazılımı İndir (.exe)
+                    <a href="https://drive.google.com/file/d/1W3CaoUy25b7gSHLxntEkSlJC8NpGvCl4/view?usp=drive_link" class="w-full sm:w-auto px-8 py-4 bg-brand-red hover:bg-brand-redHover text-white font-bold rounded-2xl transition-all shadow-lg shadow-brand-red/30 text-center">
+                        
+						Yazılımı İndir (.exe)
                     </a>
                 </div>
             </div>
@@ -544,7 +514,7 @@
                 <p class="text-gray-400 mt-2 font-light">Gelişmiş HTS veri analizi, haritalama ve raporlama sistemi.</p>
                 
                 <div class="my-8 rounded-2xl bg-zinc-900 overflow-hidden border border-white/10 h-64 md:h-[450px]">
-                    <img src="/h.jpg" alt="HTS Analitika" class="w-full h-full object-cover">
+                    <img src="https://nihatsumer.tr/h.jpg" alt="HTS Analitika" class="w-full h-full object-cover">
                 </div>
 
                 <div class="text-gray-300 space-y-4 leading-relaxed font-light">
@@ -559,7 +529,7 @@
 
                 <div class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <span class="text-xs text-gray-500 font-mono">Sürüm: v0.5.0 | Windows 10/11</span>
-                    <a href="#" class="w-full sm:w-auto px-8 py-4 bg-brand-red hover:bg-brand-redHover text-white font-bold rounded-2xl transition-all shadow-lg shadow-brand-red/30 text-center">
+                    <a href="https://drive.google.com/file/d/1px10cGlMxk76qt30ioYKzZypimUunOQV/view?usp=drive_link" class="w-full sm:w-auto px-8 py-4 bg-brand-red hover:bg-brand-redHover text-white font-bold rounded-2xl transition-all shadow-lg shadow-brand-red/30 text-center">
                         Yazılımı İndir (.exe)
                     </a>
                 </div>
@@ -605,9 +575,34 @@
                         <span class="w-8 h-8 rounded-xl bg-brand-red text-white font-bold flex items-center justify-center flex-shrink-0">3</span>
                         <div>
                             <h3 class="font-bold text-white mb-1">Teslimat Bilgilerini Girin</h3>
-                            <p class="text-sm text-gray-400 font-light">
-                                Kime kısmına <code class="text-brand-red bg-black px-2 py-1 rounded border border-white/10 font-mono">nihat@nihatsumer.com</code> yazarak satın alma işlemini tamamlayın.
-                            </p>
+                           
+<p class="text-sm text-gray-400 font-light flex items-center flex-wrap gap-2">
+    Kime kısmına 
+    <code onclick="copyEmail('nihat@nihatsumer.com')" class="text-brand-red bg-black px-2 py-1.5 rounded-lg border border-white/10 font-mono cursor-pointer hover:border-brand-red/50 hover:bg-zinc-900 transition-all group flex items-center gap-1.5" title="Kopyalamak için tıklayın">
+        nihat@nihatsumer.com
+        
+        <!-- Default Copy Icon -->
+        <svg id="icon-copy" class="w-3.5 h-3.5 text-gray-500 group-hover:text-brand-red transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+        </svg>
+
+        <!-- Success Check Icon (Hidden by default) -->
+        <svg id="icon-check" class="w-3.5 h-3.5 text-green-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+
+    </code> 
+    <span id="copyFeedback" class="text-green-500 text-xs font-bold opacity-0 transition-opacity duration-300 absolute mt-10">✓ Kopyalandı!</span>
+    yazarak satın alma işlemini tamamlayın.
+</p>						   
+
+
+
+
+
+
+
+						   
                         </div>
                     </div>
                 </div>
@@ -619,61 +614,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- ================= PAGE 8: TRENDYOL GIFT HELPER ================= 
-        <div id="page-trendyol-gift" class="page">
-            <div class="max-w-3xl mx-auto bg-brand-card border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
-                <button onclick="navigateTo('home')" class="text-xs text-brand-red font-bold uppercase tracking-wider mb-6 hover:underline flex items-center gap-1">
-                    ← Ana Sayfaya Dön
-                </button>
-                
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="p-3 bg-brand-red/10 border border-brand-red/20 rounded-2xl text-brand-red font-bold text-lg">
-                        Trendyol
-                    </div>
-                    <h1 class="text-2xl md:text-4xl font-extrabold">Trendyol Dijital Hediye Çeki</h1>
-                </div>
-                
-                <p class="text-gray-400 mb-8 leading-relaxed font-light">
-                    Trendyol Dijital Hediye Çeki oluşturarak projelerimize katkıda bulunabilirsiniz.
-                </p>
-
-                <div class="space-y-6 text-gray-300">
-                    <div class="flex gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
-                        <span class="w-8 h-8 rounded-xl bg-brand-red text-white font-bold flex items-center justify-center flex-shrink-0">1</span>
-                        <div>
-                            <h3 class="font-bold text-white mb-1">Trendyol Hediye Çeki Bölümüne Gidin</h3>
-                            <p class="text-sm text-gray-400 font-light">Trendyol mobil uygulaması veya web sitesindeki Dijital Hediye Çeki sayfasına geçiş yapın.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
-                        <span class="w-8 h-8 rounded-xl bg-brand-red text-white font-bold flex items-center justify-center flex-shrink-0">2</span>
-                        <div>
-                            <h3 class="font-bold text-white mb-1">Miktarı Seçin</h3>
-                            <p class="text-sm text-gray-400 font-light">Bütçenize uygun hediye çek tutarını seçin.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
-                        <span class="w-8 h-8 rounded-xl bg-brand-red text-white font-bold flex items-center justify-center flex-shrink-0">3</span>
-                        <div>
-                            <h3 class="font-bold text-white mb-1">Kodu İletin</h3>
-                            <p class="text-sm text-gray-400 font-light">
-                                Oluşturulan Hediye Çeki kodunu <code class="text-brand-red bg-black px-2 py-1 rounded border border-white/10 font-mono">destek@byy.com.tr</code> adresine e-posta olarak iletebilirsiniz.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-8 pt-6 border-t border-white/10 flex justify-end">
-                    <a href="https://www.trendyol.com" target="_blank" class="px-8 py-4 bg-brand-red hover:bg-brand-redHover text-white font-bold rounded-2xl transition-all shadow-lg shadow-brand-red/30 flex items-center gap-2">
-                        Trendyol'a Git →
-                    </a>
-                </div>
-            </div>
-        </div>
-		-->
 
     </main>
 
@@ -692,12 +632,6 @@
                 <button onclick="navigateTo('amazon-gift')" class="px-6 py-3.5 bg-zinc-900 hover:bg-brand-red text-white text-sm font-bold rounded-xl transition-all text-center border border-white/10 shadow-lg">
                     Amazon Hediye Kartı
                 </button>
-				
-				<!-- 				
-                <button onclick="navigateTo('trendyol-gift')" class="px-6 py-3.5 bg-zinc-800 hover:bg-brand-red text-white text-sm font-bold rounded-xl transition-all text-center border border-white/10 shadow-lg">
-                    Trendyol Hediye Kartı
-                </button>
-				 -->
             </div>
         </div>
     </section>
@@ -717,22 +651,116 @@
         </div>
     </footer>
 
-    <!-- Vanilla JS Router -->
+    <!-- Vanilla JS Router and Interactions -->
     <script>
-        function navigateTo(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
+        function closeMobileMenu() {
+            const menuToggle = document.getElementById('menuToggle');
+            const menuList = document.getElementById('menuList');
 
-            // Show target page
+            if (!menuToggle || !menuList) return;
+
+            menuList.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'Menüyü aç');
+            menuToggle.textContent = '☰';
+        }
+
+        function toggleMobileMenu() {
+            const menuList = document.getElementById('menuList');
+            const menuToggle = document.getElementById('menuToggle');
+
+            if (!menuList || !menuToggle) return;
+
+            const isOpen = menuList.classList.toggle('active');
+
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute(
+                'aria-label',
+                isOpen ? 'Menüyü kapat' : 'Menüyü aç'
+            );
+            menuToggle.textContent = isOpen ? '✕' : '☰';
+        }
+
+        function navigateTo(pageId, updateHistory = true) {
             const targetPage = document.getElementById('page-' + pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
+
+            if (!targetPage) {
+                console.warn('Page not found:', pageId);
+                return;
             }
 
-            // Smooth scroll back to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            targetPage.classList.add('active');
+
+            if (updateHistory) {
+                const hash = '#' + pageId;
+                if (window.location.hash !== hash) {
+                    history.pushState({ pageId }, '', hash);
+                }
+            }
+
+            closeMobileMenu();
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
+
+        function restorePageFromUrl() {
+            const pageId = window.location.hash.slice(1) || 'home';
+            navigateTo(pageId, false);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menuToggle');
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', toggleMobileMenu);
+            }
+
+            restorePageFromUrl();
+
+            window.addEventListener('popstate', restorePageFromUrl);
+            window.addEventListener('hashchange', restorePageFromUrl);
+        });
     </script>
+	
+	
+	
+	<script>
+    function copyEmail(email) {
+        navigator.clipboard.writeText(email).then(() => {
+            // Get elements
+            const feedback = document.getElementById('copyFeedback');
+            const iconCopy = document.getElementById('icon-copy');
+            const iconCheck = document.getElementById('icon-check');
+            
+            // Show feedback and swap icons
+            feedback.classList.remove('opacity-0');
+            iconCopy.classList.add('hidden');
+            iconCheck.classList.remove('hidden');
+            
+            // Revert everything back after 2 seconds
+            setTimeout(() => {
+                feedback.classList.add('opacity-0');
+                iconCheck.classList.add('hidden');
+                iconCopy.classList.remove('hidden');
+            }, 2000);
+        }).catch(err => {
+            console.error('Kopyalama başarısız oldu: ', err);
+        });
+    }
+</script>
+	
+	
+	
+	
+	
+	
+	
 </body>
 </html>
