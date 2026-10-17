@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><byy/> | Bilirkişi Yardımcı Yazılımları</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #050505;
+            color: #f3f4f6;
+        }
+        .bg-grid {
+            background-size: 30px 30px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="antialiased bg-grid min-h-screen flex flex-col justify-between selection:bg-red-600 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+        <nav class="max-w-6xl mx-auto bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-3 flex items-center justify-between shadow-2xl">
+            <a href="#" onclick="navigateTo('home'); return false;" class="text-2xl font-extrabold tracking-tight">
+                <span class="text-red-600">&lt;</span>byy<span class="text-red-600">/&gt;</span>
+            </a>
+            <div class="flex items-center space-x-6 text-sm font-medium">
+                <a href="#" onclick="navigateTo('home'); return false;" class="hover:text-red-500 transition-colors">Projeler</a>
+                <a href="#" onclick="navigateTo('about'); return false;" class="hover:text-red-500 transition-colors">Hakkımda / İletişim</a>
+            </div>
+            <a href="#support" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-red-600/20">
+                Destek Ol
+            </a>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER (SPA) -->
+    <main class="pt-28 pb-12 px-6 flex-grow max-w-6xl mx-auto w-full">
+
+        <!-- HOME PAGE -->
+        <div id="page-home" class="page active">
+            <!-- Hero -->
+            <section class="py-12 reveal active text-center max-w-3xl mx-auto">
+                <span class="text-red-500 font-semibold tracking-widest text-xs uppercase bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
+                    Profesyonel Çözümler
+                </span>
+                <h1 class="text-4xl md:text-6xl font-black tracking-tight mt-6 mb-4">
+                    Bilirkişi Yardımcı <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Yazılımları</span>
+                </h1>
+                <p class="text-gray-400 text-base md:text-lg leading-relaxed">
+                    Adli ve hukuki süreçleri hızlandıran, veri analizini kolaylaştıran yüksek performanslı ve minimalist araçlar.
+                </p>
+            </section>
+
+            <!-- Projects Grid (Bento Style) -->
+            <section class="py-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Project 1 -->
+                    <div onclick="navigateTo('project-1')" class="group cursor-pointer bg-[#0c0c0c] border border-white/10 hover:border-red-600/50 rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                        <div class="aspect-video overflow-hidden bg-black/50 relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-transparent to-transparent z-10"></div>
+                            <img src="/word2udf.jpg" alt="WORDUDF Kaydedici" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <div class="hidden absolute inset-0 items-center justify-center bg-zinc-900 text-red-500/40 text-4xl font-bold">WORDUDF</div>
+                        </div>
+                        <div class="p-6 relative z-20">
+                            <span class="text-xs text-red-500 font-mono">01. Dönüştürücü & Editör</span>
+                            <h3 class="text-xl font-bold mt-1 group-hover:text-red-500 transition-colors">WORDUDF Kaydedici</h3>
+                            <p class="text-gray-400 text-sm mt-2 line-clamp-2">Microsoft Word belgelerinizi UDF formatına tek tıkla dönüştürün ve doğrudan kaydedin.</p>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div onclick="navigateTo('project-2')" class="group cursor-pointer bg-[#0c0c0c] border border-white/10 hover:border-red-600/50 rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                        <div class="aspect-video overflow-hidden bg-black/50 relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-transparent to-transparent z-10"></div>
+                            <img src="/udfonizleme.jpg" alt="UDF Ön İzleme" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <div class="hidden absolute inset-0 items-center justify-center bg-zinc-900 text-red-500/40 text-4xl font-bold">UDF PREVIEW</div>
+                        </div>
+                        <div class="p-6 relative z-20">
+                            <span class="text-xs text-red-500 font-mono">02. Görüntüleyici</span>
+                            <h3 class="text-xl font-bold mt-1 group-hover:text-red-500 transition-colors">UDF Ön İzleme</h3>
+                            <p class="text-gray-400 text-sm mt-2 line-clamp-2">UYAP ve UDF uzantılı dosyaları Editör açmaya gerek kalmadan hızlıca inceleyin.</p>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div onclick="navigateTo('project-3')" class="group cursor-pointer bg-[#0c0c0c] border border-white/10 hover:border-red-600/50 rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                        <div class="aspect-video overflow-hidden bg-black/50 relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-transparent to-transparent z-10"></div>
+                            <img src="/istakiptopluindirme.jpg" alt="Bilirkişi İş Takip" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <div class="hidden absolute inset-0 items-center justify-center bg-zinc-900 text-red-500/40 text-4xl font-bold">İŞ TAKİP</div>
+                        </div>
+                        <div class="p-6 relative z-20">
+                            <span class="text-xs text-red-500 font-mono">03. Otomasyon & Dosya Yönetimi</span>
+                            <h3 class="text-xl font-bold mt-1 group-hover:text-red-500 transition-colors">Bilirkişi İş Takip ve Toplu Dosya İndirici</h3>
+                            <p class="text-gray-400 text-sm mt-2 line-clamp-2">Atanan bilirkişilik dosyalarını takip edin ve UYAP Portal üzerinden toplu olarak indirin.</p>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div onclick="navigateTo('project-4')" class="group cursor-pointer bg-[#0c0c0c] border border-white/10 hover:border-red-600/50 rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                        <div class="aspect-video overflow-hidden bg-black/50 relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-transparent to-transparent z-10"></div>
+                            <img src="/htsanalitika.jpg" alt="HTS Analitika" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <div class="hidden absolute inset-0 items-center justify-center bg-zinc-900 text-red-500/40 text-4xl font-bold">HTS ANALİTİKA</div>
+                        </div>
+                        <div class="p-6 relative z-20">
+                            <span class="text-xs text-red-500 font-mono">04. Veri Analizi</span>
+                            <h3 class="text-xl font-bold mt-1 group-hover:text-red-500 transition-colors">HTS Analitika</h3>
+                            <p class="text-gray-400 text-sm mt-2 line-clamp-2">Karmaşık HTS ve baz istasyonu kayıtlarını analiz edin, haritalandırın ve raporlayın.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- ABOUT / CONTACT PAGE -->
+        <div id="page-about" class="page">
+            <div class="max-w-3xl mx-auto bg-[#0c0c0c] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
+                    <div class="w-32 h-32 rounded-2xl bg-gradient-to-tr from-red-600 to-zinc-800 p-1 flex-shrink-0">
+                        <div class="w-full h-full bg-black rounded-[14px] flex items-center justify-center text-3xl font-bold text-red-500">
+                            &lt;byy/&gt;
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-extrabold">Hakkımda & İletişim</h1>
+                        <p class="text-red-500 font-mono text-sm mt-1">Bilirkişi Yazılımları Geliştiricisi</p>
+                    </div>
+                </div>
+                <div class="space-y-4 text-gray-300 leading-relaxed border-t border-white/10 pt-6">
+                    <p>
+                        Merhaba, ben <strong class="text-white">&lt;byy/&gt;</strong> projelerinin geliştiricisiyim. Adli bilirkişilik süreçlerinde yaşanan zaman kaybını azaltmak ve raporlama standartlarını yükseltmek amacıyla özel yazılım çözümleri üretiyorum.
+                    </p>
+                    <p>
+                        Geliştirdiğim uygulamalar güvenli, hızlı ve kullanıcı dostu arayüzleri ön planda tutarak tasarlanmıştır.
+                    </p>
+                </div>
+                <div class="mt-8 flex flex-wrap gap-4 border-t border-white/10 pt-6">
+                    <a href="https://linkedin.com" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-white/5 hover:bg-red-600 text-white rounded-xl transition-all border border-white/10">
+                        LinkedIn Profil
+                    </a>
+                    <a href="mailto:contact@example.com" class="flex items-center gap-2 px-5 py-3 bg-white/5 hover:bg-red-600 text-white rounded-xl transition-all border border-white/10">
+                        E-posta Gönder
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 1 DETAIL PAGE -->
+        <div id="page-project-1" class="page">
+            <div class="max-w-4xl mx-auto bg-[#0c0c0c] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <button onclick="navigateTo('home')" class="text-xs text-red-500 font-bold uppercase tracking-wider mb-6 hover:underline flex items-center gap-1">
+                    ← Tüm Projelere Dön
+                </button>
+                <h1 class="text-3xl md:text-5xl font-black">WORDUDF Kaydedici</h1>
+                <p class="text-gray-400 mt-2">Microsoft Word belgelerinizi UDF formatına dönüştürmenin en hızlı yolu.</p>
+                <div class="my-8 rounded-2xl bg-zinc-900 overflow-hidden border border-white/10 h-64 md:h-[450px]">
+                    <img src="/word2udf.jpg" alt="WORDUDF Kaydedici" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                </div>
+                <div class="text-gray-300 space-y-4 leading-relaxed">
+                    <h3 class="text-xl font-bold text-white">Yazılım Hakkında</h3>
+                    <p>WORDUDF Kaydedici, hazırladığınız Word dokümanlarını UYAP uyumlu UDF formatına hatasız şekilde aktarır. Şablon bozulmalarını engeller ve hızlı kaydetme olanağı sunar.</p>
+                </div>
+                <div class="mt-8 pt-6 border-t border-white/10 flex justify-end">
+                    <a href="#" class="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-red-600/30">
+                        Yazılımı İndir (.exe)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 2 DETAIL PAGE -->
+        <div id="page-project-2" class="page">
+            <div class="max-w-4xl mx-auto bg-[#0c0c0c] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <button onclick="navigateTo('home')" class="text-xs text-red-500 font-bold uppercase tracking-wider mb-6 hover:underline flex items-center gap-1">
+                    ← Tüm Projelere Dön
+                </button>
+                <h1 class="text-3xl md:text-5xl font-black">UDF Ön İzleme</h1>
+                <p class="text-gray-400 mt-2">UYAP dosyalarını anında görüntüleyin.</p>
+                <div class="my-8 rounded-2xl bg-zinc-900 overflow-hidden border border-white/10 h-64 md:h-[450px]">
+                    <img src="/udfonizleme" alt="UDF Ön İzleme" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                </div>
+                <div class="text-gray-300 space-y-4 leading-relaxed">
+                    <h3 class="text-xl font-bold text-white">Yazılım Hakkında</h3>
+                    <p>UDF Ön İzleme aracı, UYAP Editör programını açmaya gerek kalmadan .udf uzantılı dosyaların içeriğini hızlıca kontrol etmenizi sağlar.</p>
+                </div>
+                <div class="mt-8 pt-6 border-t border-white/10 flex justify-end">
+                    <a href="#" class="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-red-600/30">
+                        Yazılımı İndir (.exe)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 3 DETAIL PAGE -->
+        <div id="page-project-3" class="page">
+            <div class="max-w-4xl mx-auto bg-[#0c0c0c] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <button onclick="navigateTo('home')" class="text-xs text-red-500 font-bold uppercase tracking-wider mb-6 hover:underline flex items-center gap-1">
+                    ← Tüm Projelere Dön
+                </button>
+                <h1 class="text-3xl md:text-5xl font-black">Bilirkişi İş Takip ve Toplu Dosya İndirici</h1>
+                <p class="text-gray-400 mt-2">Dosya takibi ve toplu indirme otomasyonu.</p>
+                <div class="my-8 rounded-2xl bg-zinc-900 overflow-hidden border border-white/10 h-64 md:h-[450px]">
+                    <img src="/istakiptopluindirme.jpg" alt="Bilirkişi İş Takip ve Toplu Dosya İndirici" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                </div>
+                <div class="text-gray-300 space-y-4 leading-relaxed">
+                    <h3 class="text-xl font-bold text-white">Yazılım Hakkında</h3>
+                    <p>Atsa verilen bilirkişilik dosyalarını düzenli bir panel üzerinden takip etmenize ve dosya eklerini tek tıkla toplu olarak bilgisayarınıza indirmenize olanak tanır.</p>
+                </div>
+                <div class="mt-8 pt-6 border-t border-white/10 flex justify-end">
+                    <a href="#" class="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-red-600/30">
+                        Yazılımı İndir (.exe)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 4 DETAIL PAGE -->
+        <div id="page-project-4" class="page">
+            <div class="max-w-4xl mx-auto bg-[#0c0c0c] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+                <button onclick="navigateTo('home')" class="text-xs text-red-500 font-bold uppercase tracking-wider mb-6 hover:underline flex items-center gap-1">
+                    ← Tüm Projelere Dön
+                </button>
+                <h1 class="text-3xl md:text-5xl font-black">HTS Analitika</h1>
+                <p class="text-gray-400 mt-2">Gelişmiş HTS veri analizi ve raporlama aracı.</p>
+                <div class="my-8 rounded-2xl bg-zinc-900 overflow-hidden border border-white/10 h-64 md:h-[450px]">
+                    <img src="/htsanalitika" alt="HTS Analitika" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                </div>
+                <div class="text-gray-300 space-y-4 leading-relaxed">
+                    <h3 class="text-xl font-bold text-white">Yazılım Hakkında</h3>
+                    <p>HTS Analitika, baz istasyonu kayıtları ve iletişim verilerini analiz ederek görsel haritalar ve istatistiksel raporlar oluşturur.</p>
+                </div>
+                <div class="mt-8 pt-6 border-t border-white/10 flex justify-end">
+                    <a href="#" class="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-red-600/30">
+                        Yazılımı İndir (.exe)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- DESTEK / BANNER SECTION (GLOBAL) -->
+    <section id="support" class="max-w-6xl mx-auto px-6 mb-12 w-full">
+        <div class="bg-gradient-to-r from-red-950/40 via-zinc-900 to-black border border-red-600/30 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-red-500">Projeleri Destekleyin</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold mt-1">Geliştiriciye Destek Olun</h2>
+                <p class="text-gray-400 text-sm mt-2 max-w-xl">
+                    Bu ücretsiz araçların gelişmesine katkıda bulunmak isterseniz hediye kartı göndererek destek olabilirsiniz.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+                <a href="https://www.amazon.com.tr" target="_blank" class="px-6 py-3.5 bg-zinc-800 hover:bg-red-600 text-white text-sm font-bold rounded-xl transition-all text-center border border-white/10">
+                    Amazon Hediye Kartı
+                </a>
+                <a href="https://www.trendyol.com" target="_blank" class="px-6 py-3.5 bg-zinc-800 hover:bg-red-600 text-white text-sm font-bold rounded-xl transition-all text-center border border-white/10">
+                    Trendyol Hediye Kartı
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 py-8 px-6 text-center text-gray-500 text-sm">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>© 2026 <span class="text-white font-bold">&lt;byy/&gt;</span> — Bilirkişi Yardımcı Yazılımları</p>
+            <div class="flex gap-6">
+                <a href="#" onclick="navigateTo('home'); return false;" class="hover:text-white">Projeler</a>
+                <a href="#" onclick="navigateTo('about'); return false;" class="hover:text-white">İletişim</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SPA ROUTER SCRIPT -->
+    <script>
+        function navigateTo(pageId) {
+            // Tüm sayfaları gizle
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Hedef sayfayı göster
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Sayfayı yukarı kaydır
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
