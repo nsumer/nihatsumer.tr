@@ -242,13 +242,45 @@
             <button class="hamburger-btn" id="menuToggle">☰</button>
 
             <!-- Sağ Blok: Menü Listesi -->
+           
+		   
+		   
+		   <!-- Sağ Blok: Menü Listesi -->
             <nav class="menu-bar" id="menuList">
                 <!-- Navigation Links -->
-                <div class="flex items-center space-x-6 text-sm font-medium">
-                    <a href="#" onclick="navigateTo('home'); return false;" class="text-gray-300 hover:text-brand-red transition-colors">Projeler</a>
-                    <a href="#" onclick="navigateTo('about'); return false;" class="text-gray-300 hover:text-brand-red transition-colors">Hakkımda / İletişim</a>
+                <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 text-sm font-medium w-full">
+                    
+                    <!-- Projeler & Dropdown Submenu -->
+                    <div class="relative group">
+                        <!-- Main Link with Down Arrow -->
+                        <a href="#" onclick="navigateTo('home'); return false;" class="flex items-center gap-1 text-gray-300 hover:text-brand-red transition-colors py-2">
+                            Projeler
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </a>
+                        
+                        <!-- Submenu Items -->
+                        <div class="md:absolute md:top-full md:left-0 md:w-56 md:opacity-0 md:invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 md:pt-2">
+                            <div class="flex flex-col overflow-hidden bg-transparent md:bg-brand-card/95 md:backdrop-blur-xl md:border md:border-white/10 md:rounded-2xl md:shadow-2xl border-l-2 border-brand-red/50 md:border-l-0 pl-4 md:pl-0 mt-1 md:mt-0">
+                                <a href="#" onclick="navigateTo('project-1'); return false;" class="px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 last:border-0 block">WORDUDF Kaydedici</a>
+                                <a href="#" onclick="navigateTo('project-2'); return false;" class="px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 last:border-0 block">UDF Ön İzleme</a>
+                                <a href="#" onclick="navigateTo('project-3'); return false;" class="px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 last:border-0 block">İş Takip ve İndirici</a>
+                                <a href="#" onclick="navigateTo('project-4'); return false;" class="px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 last:border-0 block">HTS Analitika</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" onclick="navigateTo('about'); return false;" class="text-gray-300 hover:text-brand-red transition-colors py-2">Hakkımda / İletişim</a>
                 </div>
             </nav>
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
         </nav>
     </header>
 
