@@ -12,7 +12,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const menuList = document.getElementById('menuList');
+
+  menuToggle.addEventListener('click', () => {
+    menuList.classList.toggle('active');
     
+    // İsteğe bağlı: Menü açıldığında ☰ ikonunu ✕ (Kapat) işaretine dönüştürür
+    if (menuList.classList.contains('active')) {
+      menuToggle.textContent = '✕';
+    } else {
+      menuToggle.textContent = '☰';
+    }
+  });
+</script>
+	
+	
     <script>
         tailwind.config = {
             theme: {
@@ -115,8 +132,84 @@
 .right {
   text-align: right;
 }
+
+
+/* --- GENEL VE BÜYÜK EKRAN TASARIMI --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #f8f9fa;
+  position: relative;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo { font-weight: bold; font-size: 24px; }
+.slogan { font-size: 14px; color: #666; }
+
+.menu-bar {
+  display: flex;
+  gap: 20px;
+}
+.menu-bar a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Masaüstünde Hamburger Butonunu Gizle */
+.hamburger-btn {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* --- MOBİL VE KÜÇÜK EKRAN TASARIMI (768px ve altı) --- */
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: block; /* Butonu mobilde görünür yap */
+  }
+
+  .brand-group {
+    flex-direction: column; /* Sloganı logonun altına indir */
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .menu-bar {
+    display: none; /* Menüyü varsayılan olarak mobilde gizle */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Navbar'ın hemen altından başlaması için */
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    gap: 15px;
+    z-index: 100;
+  }
+
+  /* JavaScript ile bu sınıf tetiklendiğinde menü açılacak */
+  .menu-bar.active {
+    display: flex;
+  }
+}
+
+		
 		
     </style>
+
+
+
+	
 </head>
 <body class="antialiased bg-grid min-h-screen flex flex-col justify-between selection:bg-brand-red selection:text-white">
 
@@ -170,6 +263,27 @@
         </nav>
     </header>
 
+<header class="navbar">
+  <!-- Sol Blok: Logo ve Slogan -->
+  <div class="brand-group">
+    <span class="logo">Logo</span>
+    <span class="slogan">Bu bir slogan</span>
+  </div>
+
+  <!-- Hamburger Butonu (Mobilde görünecek) -->
+  <button class="hamburger-btn" id="menuToggle">☰</button>
+
+  <!-- Sağ Blok: Menü Listesi -->
+  <nav class="menu-bar" id="menuList">
+    <a href="#">Ana Sayfa</a>
+    <a href="#">Hakkımızda</a>
+    <a href="#">İletişim</a>
+  </nav>
+</header>
+
+
+
+	
     <!-- MAIN CONTENT CONTAINER (SPA Views) -->
     <main class="pt-28 pb-12 px-4 md:px-8 flex-grow max-w-6xl mx-auto w-full" id="app-container">
 
