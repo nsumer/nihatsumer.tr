@@ -98,7 +98,24 @@
   justify-content: center; /* Yatayda ortalar */
 }
 
-        
+.container-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Alanı 3 eşit sütuna böler */
+  width: 100%;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center; /* Tam orta eksene hizalar */
+}
+
+.right {
+  text-align: right;
+}
+		
     </style>
 </head>
 <body class="antialiased bg-grid min-h-screen flex flex-col justify-between selection:bg-brand-red selection:text-white">
@@ -106,28 +123,29 @@
     <!-- Sticky Navigation Header -->
     <header class="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4 centered-heading">
         <nav class="max-w-6xl mx-auto bg-black/70 backdrop-blur-xl border border-white/10 rounded-2xl px-5 py-3 flex items-center justify-between shadow-2xl">
-            <!-- Logo with Space Grotesk Font -->
-            <a href="#" onclick="navigateTo('home'); return false;" class="font-logo text-2xl font-bold tracking-tight flex items-center group">
-                <span class="text-brand-red group-hover:text-red-400 transition-colors">&lt;</span>byy<span class="text-brand-red group-hover:text-red-400 transition-colors">/&gt;</span>
-            </a>
 
-            
+<div class="container-grid">
+  <span class="left">
+	  <!-- Logo with Space Grotesk Font -->
+      <a href="#" onclick="navigateTo('home'); return false;" class="font-logo text-2xl font-bold tracking-tight flex items-center group">
+      <span class="text-brand-red group-hover:text-red-400 transition-colors">&lt;</span>byy<span class="text-brand-red group-hover:text-red-400 transition-colors">/&gt;</span>
+      </a>
+</span>
+  <span class="center">
+         
 <h3 class="text-4xl md:text-4xl font-black tracking-tight mb-4 centered-heading"  font-family: Space Grotesk, sans-serif; >
-
-    
-                    
     <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-800">B</span>
     ilirkişi&nbsp; 
-    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-800">
-    Y
-    </span>
-    ardımcı&nbsp;<span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-800">Y
-    </span>azılımları
-                        
-                </h3>
+    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-800">Y</span>
+    ardımcı&nbsp;<span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-800">Y</span>
+	azılımları
+</h3>
                 
-            
-            <!-- Navigation Links -->
+
+	  
+  </span>
+  <span class="right">
+	              <!-- Navigation Links -->
             <div class="flex items-center space-x-6 text-sm font-medium">
                 <a href="#" onclick="navigateTo('home'); return false;" class="text-gray-300 hover:text-brand-red transition-colors">Projeler</a>
                 <a href="#" onclick="navigateTo('about'); return false;" class="text-gray-300 hover:text-brand-red transition-colors">Hakkımda / İletişim</a>
@@ -140,6 +158,15 @@
                 <span>Destek Ol</span>
             </a>
             -->
+
+  </span>
+</div>
+
+
+
+
+
+            
         </nav>
     </header>
 
